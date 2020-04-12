@@ -1,0 +1,43 @@
+@import 'mixins'
+@import 'variables'
+@import '../../base-style.sass'
+
+.navigation
+
+  &__title
+    margin: 0
+    margin-left: 30px
+    @include font-primary(12px, #5b6779, 600)
+    text-transform: uppercase
+
+  &__list
+    @include ul-reset
+    margin-top: 15px
+
+  &__item
+    position: relative
+
+  &__link
+    display: flex
+    padding: 9.2px 30px
+    @include font-primary(false, $white, 600)
+    text-decoration: none
+    transition: $transition-time
+    cursor: pointer
+
+    &:hover
+      background-color: rgba(49, 61, 79, 0.54)
+
+    &--active
+      background-color: #313d4f
+
+  &__search
+    display: block
+    margin: 0 30px
+    margin-top: 21px
+
+  &__notification
+    position: absolute
+    right: 30px
+    top: 50%
+    transform: translateY(-50%)

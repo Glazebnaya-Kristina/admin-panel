@@ -1,0 +1,72 @@
+@import 'mixins'
+@import 'variables'
+@import '../base-style'
+
+.controls
+  display: flex
+  height: 100%
+  @include for-small-desktop-up
+    position: fixed
+    z-index: 15
+
+  &__wrapper-left
+    display: flex
+    flex-direction: column
+    padding: 30px 25px 17px
+    background-color: $bg-primary
+
+    @include for-small-desktop-up
+      z-index: 10
+
+    @include for-tablet-portrait-up
+      padding-left: 5px
+      padding-right: 5px
+
+  &__wrapper-right
+    display: flex
+    flex-direction: column
+    width: 100%
+    padding: 26px 0 30px
+    background-color: $bg-secondary
+    transition: $transition-time
+
+    @include for-small-desktop-up
+      position: absolute
+      left: 0
+      top: 0
+      bottom: 0
+      transform: translateX(-100%)
+      z-index: 5
+      width: 250px
+      transition: $transition-time
+
+    &--tablet-active
+      @include for-small-desktop-up
+        overflow-y: auto
+        transform: translateX(100px)
+
+      @include for-tablet-portrait-up
+        transform: translateX(40px)
+
+  &__navigation
+    display: block
+    margin-bottom: 20px
+
+  &__buttons
+    @include ul-reset
+    display: grid
+    grid-template-columns: auto auto
+    grid-gap: 15px
+    margin-top: auto
+
+    @include for-tablet-portrait-up
+      grid-template-columns: auto
+      justify-content: center
+
+  &__friends
+    display: block
+    margin: 0 30px
+    margin-top: auto
+
+
+

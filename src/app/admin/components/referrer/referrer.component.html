@@ -1,0 +1,32 @@
+<div class="referrer">
+  <table class="referrer__table">
+    <tbody class="referrer__body">
+      <tr class="referrer__row referrer__row--header">
+        <th class="referrer__item referrer__item--role">Referrer</th>
+        <th class="referrer__item referrer__item--header">Views</th>
+        <th class="referrer__item referrer__item--header">Sales</th>
+        <th class="referrer__item referrer__item--header">Conversion</th>
+        <th class="referrer__item referrer__item--header referrer__item--sort">Total
+          <button class="referrer__button-sort" type="button">
+            <svg class="referrer__icon-sort">
+              <use xlink:href="/assets/sprites/sprite.svg#Sort-marks"></use>
+            </svg>
+          </button>
+        </th>
+      </tr>
+      <tr class="referrer__row" *ngFor="let value of referrerArr; let odd = odd" [class.referrer__row--odd]="odd">
+        <td class="referrer__item">{{ value.link }}</td>
+        <td class="referrer__item">{{ value.views }}</td>
+        <td class="referrer__item">{{ value.sales }}</td>
+        <td
+          class="referrer__item"
+          *ngIf="value.conversion !== 0.0; else conversionZero"
+        >{{ value.conversion }}%</td>
+        <ng-template #conversionZero>
+          <td class="referrer__item">{{ value.conversion | percent: '1.1' }}</td>
+        </ng-template>
+        <td class="referrer__item">${{ value.total }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

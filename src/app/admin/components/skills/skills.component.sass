@@ -1,0 +1,36 @@
+@import 'mixins'
+@import 'variables'
+
+.skills
+  @include ul-reset
+  display: flex
+  align-items: center
+  flex-wrap: wrap
+  margin-left: -5px
+  margin-top: -5px
+  &__item
+    margin-left: 5px
+    margin-top: 5px
+
+  &__link
+    display: flex
+    padding: 3px 7px
+    @include font-primary(10px, $white, 600)
+    text-decoration: none
+    text-transform: uppercase
+    border-radius: 3px
+    background-color: $blue
+
+    @include for-tablet-portrait-up
+      font-size: 8px
+
+    &--photography
+      background-color: $blue
+    &--teacher
+      background-color: $green
+    &--traveler
+      background-color: $grey
+    &--ios
+      background-color: $pink
+    &--design
+      background-color: $blue-light

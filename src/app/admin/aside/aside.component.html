@@ -1,0 +1,65 @@
+<aside class="controls">
+  <div class="controls__wrapper-left">
+    <ul class="users">
+      <li class="users__item">
+        <a href="#" class="users__link">
+          <img src="/assets/img/user.jpg" alt="Foto user" class="user-foto">
+        </a>
+      </li>
+      <li class="users__item">
+        <a href="#" class="users__link users__link--active">
+          <img src="/assets/img/user.jpg" alt="Foto user" class="user-foto">
+        </a>
+      </li>
+      <li class="users__item">
+        <a href="#" class="users__link">
+          <img src="/assets/img/user.jpg" alt="Foto user" class="user-foto">
+        </a>
+      </li>
+      <li class="users__item">
+        <a href="#" class="users__link">
+          <img src="/assets/img/user.jpg" alt="Foto user" class="user-foto">
+        </a>
+      </li>
+      <li class="users__item">
+        <a href="#" class="users__link">
+          <img src="/assets/img/user.jpg" alt="Foto user" class="user-foto">
+        </a>
+      </li>
+    </ul>
+    <ul class="controls__buttons">
+      <li class="controls__buttons-item">
+        <button
+          class="controls-button controls__buttons--toggle"
+          type="button"
+          (click)="openNavigation()"
+        >
+          <svg class="controls-button__icon">
+            <use xlink:href="/assets/sprites/sprite.svg#Grid"></use>
+          </svg>
+        </button>
+      </li>
+      <li class="controls__buttons-item">
+        <button class="controls-button" type="button">
+          <svg class="controls-button__icon">
+            <use xlink:href="/assets/sprites/sprite.svg#Settings"></use>
+          </svg>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div
+    class="controls__wrapper-right"
+    [ngClass]="toggleAside ? 'controls__wrapper-right--tablet-active': ''"
+  >
+    <app-navigation
+      class="controls__navigation"
+      [inviteQuantity]="invite"
+    ></app-navigation>
+    <app-friends
+      class="controls__friends"
+      [friend]="friendArr"
+    ></app-friends>
+  </div>
+</aside>
+

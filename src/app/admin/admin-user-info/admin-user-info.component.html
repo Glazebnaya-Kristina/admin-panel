@@ -1,0 +1,109 @@
+<div class="user-info">
+  <article class="user-info__information">
+    <header class="user-info__header">
+      <img src="/assets/img/user.jpg" alt="User-foto" class="user-info__img">
+      <h2 class="user-info__name"> {{ userInfo.name }} </h2>
+      <p class="user-info__description"> {{ userInfo.description }} </p>
+      <button class="user-info__button-edit" type="button" (click)="removeClassPointEven()">
+        <svg class="user-info__button-edit-icon" viewBox="0 0 16 16">
+          <use xlink:href="/assets/sprites/sprite.svg#pencil_icon"></use>
+        </svg>
+      </button>
+    </header>
+    <div class="user-info__body">
+      <form class="user-info__form" [formGroup]="formUserInfo" novalidate>
+        <ul class="user-info__data">
+          <li class="user-info__data-item">
+            <label
+              class="label user-info__label"
+              [ngClass]="!buttonEdit ? '' : 'user-info__label--editing'"
+            >
+              <span class="label__name user-info__field-description">Email</span>
+              <input
+                type="email"
+                name="email"
+                class="input"
+                placeholder="Type email"
+                formControlName="userEmail"
+                [ngClass]="formUserInfo.controls['userEmail'].invalid && formUserInfo.controls['userEmail'].touched ? 'input-error' : ''"
+              >
+            </label>
+          </li>
+          <li class="user-info__data-item">
+            <label
+              class="label user-info__label"
+              [ngClass]="!buttonEdit ? '' : 'user-info__label--editing'"
+            >
+              <span class="label__name user-info__field-description">Mobile</span>
+              <input
+                type="tel"
+                class="input"
+                name="tel"
+                placeholder="+00 (0) 0000 000 000"
+                formControlName="userTel"
+                [ngClass]="formUserInfo.controls['userTel'].invalid && formUserInfo.controls['userTel'].touched ? 'input-error' : ''"
+              >
+            </label>
+          </li>
+          <li class="user-info__data-item">
+            <label
+              class="label user-info__label"
+              [ngClass]="!buttonEdit ? '' : 'user-info__label--editing'"
+            >
+              <span class="label__name user-info__field-description">Skill Level</span>
+              <input
+                type="text"
+                class="input"
+                name="skill"
+                placeholder="Type skill level"
+                formControlName="userSkill"
+                [ngClass]="formUserInfo.controls['userSkill'].invalid && formUserInfo.controls['userSkill'].touched ? 'input-error' : ''"
+              >
+            </label>
+          </li>
+          <li class="user-info__data-item">
+            <span class="user-info__field-description">Paid Out Limit</span>
+            <app-progress-bar
+              class="user-info__progress-bar"
+              [limit]="userInfo"
+              [percent]="userInfo"
+              [wholeAmount]="userInfo"
+            ></app-progress-bar>
+          </li>
+          <li class="user-info__data-item">
+            <span class="user-info__field-description">Bio</span>
+            <p class="user-info__user-description"> {{ userInfo.bio }} </p>
+            <!--          <label class="label user-info__label">-->
+            <!--            <textarea class="user-info__user-description" placeholder="{{ userInfo.bio }}"></textarea>-->
+            <!--          </label>-->
+          </li>
+          <li class="user-info__data-item">
+            <span class="user-info__field-description">Skills</span>
+            <app-skills
+              class="user-info__skills"
+              [skills]="userInfo.skills"
+            ></app-skills>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </article>
+  <div class="user-info__information user-info__information--event">
+    <p class="user-info__field-description">Upcoming Events with Jordan</p>
+    <ul class="user-info__event-list">
+      <li class="user-info__event-item" *ngFor="let eventItem of userInfo.event">
+        <div class="user-info__event-info">
+          <h3 class="user-info__event-title">{{ eventItem.title }}</h3>
+          <time class="user-info__event-time" datetime="2020-01-13T18:30">{{ eventItem.dataTime }}</time>
+        </div>
+        <app-skills
+          class="user-info__event-skills"
+          [skills]="eventItem.skills"
+        ></app-skills>
+      </li>
+    </ul>
+
+  </div>
+</div>
+
+

@@ -1,0 +1,96 @@
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg)
+  $src: null
+  $extmods: (eot: '?', svg: '#' + str-replace($name, ' ', '_'))
+
+  $formats: (otf: 'opentype', ttf: 'truetype')
+
+  @each $ext in $exts
+    $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext)
+    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext)
+    $src: append($src, url(quote($path + '.' + $extmod)) format(quote($format)), comma)
+
+  @font-face
+    font-family: quote($name)
+    font-style: $style
+    font-weight: $weight
+    src: $src
+
+
+@mixin font-primary($size: false, $colour: false, $weight: false, $lh: false, $style: false)
+  font-family: 'Source Sans Pro', sans-serif
+  @if $size
+    font-size: $size
+  @if $colour
+    color: $colour
+  @if $weight
+    font-weight: $weight
+  @if $lh
+    line-height: $lh
+  @if $style
+    font-style: $style
+
+
+//Media mixin desktop first
+@mixin for-big-desktop-up
+  @media (max-width: 1800px)
+    @content
+
+@mixin for-middle-desktop-up
+  @media (max-width: 1600px)
+    @content
+
+@mixin for-small-desktop-up
+  @media (max-width: 1400px)
+    @content
+
+@mixin for-desktop-up
+  @media (max-width: 1200px)
+    @content
+
+@mixin for-tablet-landscape-up
+  @media (max-width: 992px)
+    @content
+
+@mixin for-tablet-portrait-up
+  @media (max-width: 600px)
+    @content
+
+
+
+
+
+
+
+
+
+@mixin ul-reset
+  margin: 0
+  padding: 0
+  list-style: none
+
+
+// псевдоэлемент
+@mixin pseudo($content: '', $position: absolute, $display: block)
+  content: $content
+  position: $position
+  display: $display
+
+
+// placeholder
+@mixin placeholder
+  &::-webkit-input-placeholder
+    @content
+  &:-moz-placeholder
+    @content
+  &::-moz-placeholder
+    @content
+  &:-ms-input-placeholder
+    @content
+
+// фотки
+@mixin img
+  object-fit: cover
+  object-position: center center
+  display: flex
+  width: 100%
+  height: 100%

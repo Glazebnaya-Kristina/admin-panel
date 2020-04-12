@@ -1,0 +1,86 @@
+@import 'mixins'
+@import 'variables'
+
+.title
+  margin: 0
+  @include font-primary(24px, false, 400)
+
+  @include for-tablet-portrait-up
+    font-size: 16px
+
+.label
+  display: flex
+  width: 100%
+  height: 100%
+
+.input
+  display: flex
+  width: 100%
+  padding: 0
+  @include font-primary(16px, $color-text-user, 600)
+  border: none
+  background-color: transparent
+  outline: none
+  @include placeholder
+    @include font-primary(16px, $color-text-user, 600)
+
+  @include for-tablet-portrait-up
+    font-size: 12px
+    @include placeholder
+      font-size: 12px
+
+.users
+  @include ul-reset
+  display: grid
+  grid-gap: 30px
+  align-content: baseline
+
+  @include for-tablet-portrait-up
+    grid-gap: 15px
+
+  &__link
+    display: block
+    width: 50px
+    height: 50px
+    opacity: .5
+    transition: $transition-time
+    cursor: pointer
+    @include for-tablet-portrait-up
+      width: 30px
+      height: 30px
+
+    &--active
+      opacity: 1
+
+.user-foto
+  border-radius: 50%
+  @include img
+
+.controls-button
+  padding: 0
+  border: none
+  background-color: transparent
+
+  &__icon
+    width: 16px
+    height: 16px
+    fill: #475364
+
+.notification
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 24px
+  height: 24px
+  @include font-primary(false, $white, 600)
+  border-radius: 50%
+  background-image: linear-gradient(to top, #1991eb 0%, #2ea1f8 100%)
+
+  &--large
+    width: 32px
+    border-radius: 12px
+
+.input-error
+  color: #f86b67
+  @include placeholder
+    color: #f86b67

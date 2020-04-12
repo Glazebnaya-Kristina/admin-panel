@@ -1,0 +1,11 @@
+<ul class="skills">
+  <li class="skills__item" *ngFor="let skillItem of skills">
+    <a
+      href="#"
+      class="skills__link"
+      [ngClass]="'skills__link--' + skillItem.class"
+    >
+      {{ skillItem.skill }}
+    </a>
+  </li>
+</ul>

@@ -1,0 +1,92 @@
+@import 'mixins'
+@import 'variables'
+
+
+.statistics-card
+  @include ul-reset
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr))
+  grid-gap: 22px
+
+  &__item
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    border-radius: 4px
+    border: 1px solid $border
+    background-color: $white
+
+    &:nth-child(2)
+      .statistics-card__title
+        color: $color-green
+
+    &:nth-child(3)
+      .statistics-card__title
+        color: $color-orange
+
+    &:nth-child(4)
+      .statistics-card__title
+        color: $pink
+
+  &__body
+    display: flex
+    flex-direction: column
+    align-items: center
+    padding: 22px 5px 22px
+
+  &__value
+    @include font-primary(30px, false, 400)
+    text-align: center
+
+    @include for-tablet-portrait-up
+      font-size: 18px
+
+  &__title
+    margin: 0
+    margin-top: 11px
+    @include font-primary(12px, $color-blue, 600)
+    text-transform: uppercase
+    text-align: center
+
+    @include for-tablet-portrait-up
+      margin-top: 5px
+      font-size: 10px
+
+  &__bottom
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 15px 10px
+    border: 1px solid $border
+    border-bottom: 0
+    background-color: #f5f8fa
+
+  &__wrapper-icon
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 13px
+    height: 13px
+    border-radius: 50%
+    background-color: $color-green
+
+    &--down
+      background-color: $pink
+
+      .statistics-card__icon
+        transform: none
+        margin-bottom: 0
+
+  &__icon
+    transform: rotate(-180deg)
+    width: 5px
+    height: 4px
+    margin-bottom: 1px
+
+  &__description
+    margin-left: 13px
+    font-size: 12px
+    text-transform: uppercase
+
+    @include for-tablet-portrait-up
+      font-size: 10px

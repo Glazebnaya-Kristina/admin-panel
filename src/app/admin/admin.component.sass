@@ -1,0 +1,30 @@
+@import 'mixins'
+@import 'variables'
+@import 'base-style'
+
+.admin
+  position: relative
+  display: flex
+  min-height: 100vh
+  background-color: $bg-main
+  transition: $transition-time
+
+  &__aside
+    width: 22%
+    @include for-small-desktop-up
+      width: 100px
+    @include for-tablet-portrait-up
+      width: 40px
+
+  &__main
+    width: 78%
+    transition: $transition-time
+
+    @include for-small-desktop-up
+      width: calc(100% - 40px)
+
+    @include for-tablet-portrait-up
+      padding-bottom: 20px
+
+
+

@@ -1,0 +1,63 @@
+@import 'mixins'
+@import 'variables'
+
+.profile
+  display: flex
+  align-items: center
+
+  &__wrapper-foto
+    position: relative
+
+    &:after
+      @include pseudo
+      right: 0
+      bottom: 0
+      width: 17px
+      height: 17px
+      border-radius: 50%
+      background-color: $white
+
+    &:before
+      @include pseudo
+      right: 2px
+      bottom: 2px
+      z-index: 5
+      width: 6px
+      height: 6px
+      border-radius: 50%
+      border: 3px solid $green
+
+  &__foto
+    @include img
+    width: 50px
+    height: 50px
+    border-radius: 50%
+
+    @include for-tablet-portrait-up
+      width: 40px
+      height: 40px
+
+  &__info
+    display: flex
+    flex-direction: column
+    margin-left: 15px
+
+  &__name
+    @include font-primary(16px, $blue-juicy, 600)
+
+    @include for-tablet-portrait-up
+      font-size: 12px
+
+  &__status
+    @include font-primary(false, $color-opacity, 600)
+
+    @include for-tablet-portrait-up
+      font-size: 10px
+
+  &__icon
+    width: 8px
+    height: 5px
+    margin-left: 35px
+
+    @include for-tablet-portrait-up
+      margin-left: 15px

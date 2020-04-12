@@ -1,0 +1,11 @@
+<div class="progress-bar">
+  <p class="progress-bar__line">
+    <span class="progress-bar__fill"
+      [style.width.%]="(limit.limit * 100) / wholeAmount.wholeAmount"
+    ></span>
+  </p>
+ <span class="progress-bar__amount">
+   <b class="progress-bar__current">${{ limit.limit }}</b>
+   /${{ wholeAmount.wholeAmount }}
+ </span>
+</div>

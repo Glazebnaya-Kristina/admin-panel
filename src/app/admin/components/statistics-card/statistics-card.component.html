@@ -1,0 +1,21 @@
+<ul class="statistics-card">
+  <li class="statistics-card__item" *ngFor="let card of cards">
+    <div class="statistics-card__body">
+      <strong class="statistics-card__value"
+              *ngIf="!card.iscurrency; else iscurrencyBlock">{{ card.value }}</strong>
+      <ng-template #iscurrencyBlock>
+        <strong class="statistics-card__value">${{ card.value }}</strong>
+      </ng-template>
+      <h3 class="statistics-card__title">{{ card.description }}</h3>
+    </div>
+    <p class="statistics-card__bottom">
+      <span
+        [ngClass]="ckeckClass(card)">
+        <svg class="statistics-card__icon">
+          <use xlink:href="/assets/sprites/sprite.svg#arrow"></use>
+        </svg>
+      </span>
+      <span class="statistics-card__description">{{ card.percent }}% {{ card.motion }}</span>
+    </p>
+  </li>
+</ul>

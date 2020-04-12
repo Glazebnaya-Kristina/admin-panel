@@ -1,0 +1,35 @@
+<div class="friends">
+  <div class="friends__header">
+    <h2 class="friends__title">Friends</h2>
+    <button class="controls-button" type="button">
+      <svg class="controls-button__icon">
+        <use xlink:href="/assets/sprites/sprite.svg#Settings"></use>
+      </svg>
+    </button>
+  </div>
+  <ul class="friends__list">
+    <li
+      class="friends__item"
+      *ngFor="let friendItem of friend"
+      [ngClass]="'friends__item--' + friendItem.mode"
+    >
+
+      <figure class="friends__figure">
+        <img
+          [src]="'/assets/img/' + friendItem.urlFoto + '.jpg'"
+          alt="Foto user"
+          class="user-foto">
+      </figure>
+      <div class="friends__user-info">
+        <h3 class="friends__user-name">{{ friendItem.name }} </h3>
+        <span class="friends__user-specialty" *ngIf="!friendItem.writes; else writesTypes">{{ friendItem.specialty }}</span>
+        <ng-template #writesTypes>
+          <span class="friends__user-specialty friends__user-specialty--typing">Typing ...</span>
+        </ng-template>
+      </div>
+      <span class="notification" *ngIf="friendItem.smsQuantity; else smsQuantityNone">{{ friendItem.smsQuantity }}</span>
+      <ng-template #smsQuantityNone>
+      </ng-template>
+    </li>
+  </ul>
+</div>

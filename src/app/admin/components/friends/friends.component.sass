@@ -1,0 +1,82 @@
+@import 'mixins'
+@import 'variables'
+@import '../../base-style.sass'
+
+
+.friends
+  &__header
+    display: flex
+    justify-content: space-between
+
+  &__title
+    margin: 0
+    @include font-primary(12px, #5b6779, 600)
+    text-transform: uppercase
+
+  &__list
+    @include ul-reset
+    margin-top: 22px
+
+  &__item
+    display: grid
+    grid-template-columns: 40px 1fr auto
+    align-items: center
+    grid-column-gap: 13px
+    &:not(:first-child)
+      margin-top: 20px
+
+    &--online
+      .friends__figure
+        &:before
+          border-color: #1bb934
+    &--offline
+      .friends__figure
+        &:before
+          border-color: #e68a2f
+
+
+  &__figure
+    position: relative
+    display: flex
+    width: 40px
+    height: 40px
+    margin: 0
+
+    &:after
+      @include pseudo
+      right: -2px
+      bottom: -2px
+      width: 18px
+      height: 18px
+      border-radius: 50%
+      background-color: $bg-secondary
+
+    &:before
+      @include pseudo
+      right: 1px
+      bottom: 1px
+      z-index: 5
+      width: 6px
+      height: 6px
+      border-radius: 50%
+      border: 3px solid #7c8ca5
+
+  &__user-name
+    margin: 0
+    @include font-primary(false, $white, 600)
+
+  &__user-specialty
+    @include font-primary(false, #7c8ca5, 600)
+
+    &--typing
+      animation: typing 2s infinite
+
+@keyframes typing
+  0%
+    opacity: .8
+  25%
+    opacity: .7
+  50%
+    opacity: .5
+  100%
+    opacity: .8

@@ -1,0 +1,182 @@
+@import 'mixins'
+@import 'variables'
+@import '../base-style'
+
+
+.user-info
+  &__information
+    border-radius: 4px
+    border: 1px solid $border
+    background-color: $white
+
+    &--event
+      margin-top: 20px
+      padding: 26px 30px 27px
+
+      @include for-tablet-portrait-up
+        padding: 26px 10px 27px
+
+  &__header
+    position: relative
+    display: flex
+    flex-direction: column
+    align-items: center
+    margin: 10px
+    padding-top: 40px
+    padding-bottom: 18px
+    background-image: url("/assets/img/bg-header.jpg")
+    background-repeat: no-repeat
+    background-position: center top
+    background-size: 100% 120px
+
+    @include for-tablet-portrait-up
+      margin: 5px
+
+  &__img
+    @include img
+    width: 156px
+    height: 156px
+    border-radius: 50%
+
+    @include for-tablet-portrait-up
+      width: 100px
+      height: 100px
+
+  &__name
+    margin: 0
+    margin-top: 18px
+    @include font-primary(24px, #47505c, 600)
+    line-height: 20px
+
+    @include for-tablet-portrait-up
+      margin-top: 10px
+      font-size: 16px
+
+  &__description
+    margin-top: 6px
+    @include font-primary(14px, $color-opacity)
+    line-height: 20px
+
+    @include for-tablet-portrait-up
+      margin-top: 2px
+      font-size: 12px
+      line-height: 18px
+
+  &__button-edit
+    position: absolute
+    top: -22px
+    right: -21px
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 40px
+    height: 40px
+    padding: 0
+    border-radius: 50%
+    border: 1px solid $border
+    background-color: #f5f8fa
+    cursor: pointer
+    transition: $transition-time
+
+    &:hover
+      box-shadow: 0 0 10px 0 rgba(#56688a, .3)
+
+    @include for-tablet-portrait-up
+      top: -7px
+      right: -7px
+      width: 20px
+      height: 20px
+
+  &__button-edit-icon
+    width: 16px
+    height: 16px
+
+    @include for-tablet-portrait-up
+      width: 10px
+      height: 10px
+
+  &__body
+    margin: 0 25px 0 30px
+    padding: 18px 0 30px
+    border-top: 3px solid rgba(222, 231, 239, .6)
+
+    @include for-tablet-portrait-up
+      margin: 0 10px 0
+
+  &__data
+    @include ul-reset
+
+  &__data-item
+    &:not(:first-child)
+      margin-top: 10px
+
+  &__label
+    flex-direction: column
+    pointer-events: none
+
+    &--editing
+      pointer-events: auto
+
+      .input
+        animation: focusInput 1s
+
+  &__user-description
+    margin-top: 6px
+    color: $color-text-user
+    line-height: 19px
+
+    @include for-tablet-portrait-up
+      font-size: 12px
+      line-height: 16px
+
+  &__field-description
+    @include font-primary(12px, $color-text-user-light)
+
+    @include for-tablet-portrait-up
+      font-size: 10px
+
+  &__progress-bar
+    margin-top: 4px
+    display: block
+
+  &__skills
+    display: block
+    margin-top: 7px
+
+  &__event-list
+    @include ul-reset
+    margin-top: 15px
+
+  &__event-item
+    display: flex
+    justify-content: space-between
+
+    &:not(:first-child)
+      margin-top: 8px
+
+  &__event-title
+    margin: 0
+    @include font-primary(16px, $color-text-user, 600)
+
+    @include for-tablet-portrait-up
+      font-size: 12px
+
+  &__event-time
+    display: flex
+    margin-top: 5px
+    color: $color-text-user
+
+    @include for-tablet-portrait-up
+      font-size: 10px
+
+  &__event-skills
+    margin-left: 5px
+
+
+@keyframes focusInput
+  0%
+    background-color: rgba(204, 204, 204, 0.31)
+  50%
+    background-color: rgba(204, 204, 204, 0.31)
+  100%
+    background-color: transparent
